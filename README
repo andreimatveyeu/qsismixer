@@ -1,0 +1,65 @@
+-------------------------- COPYRIGHT INFO ---------------------------
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+---------------------------------------------------------------------
+Author: Frederick H < hermes (at) demeter >
+
+
+Qsismixer is a frontend gui to control the mixer for Focusrite's
+Scarlett 6i6 USB sound card on Linux.  The card has a powerful
+hardware mixer. I find this program easier to use than alsamixer on
+the terminal or generic mixer GUI's.  Now including static
+configurations: qsismix can save and load arbitrary configurations
+from the command line
+
+TODO:
+an options menu would be cool
+write code to dynamically generate the visual forms
+
+
+PLEASE NOTE: Different versions of ALSA use different identifying
+control numbers internally to refer to the 6i6's controls. These
+control codes are compiled into Qsismixer at build time. Therefore,
+you must build Qsismixer against the ALSA headers for the same version
+as the ALSA libraries that are installed on your system. Eg, if you
+built Qsismixer against ALSA < 1.1.2, and then update your system to
+ALSA >= 1.1.2, you will have to rebuild Qsismixer against the new ALSA
+library in order for the program to fñunction properly. Very similar
+errors happen with ALSA updates 1.1.5 and 1.1.7.
+
+Error messages related to this include:
+looking for string 'Scarlett 6i6 USB-Sync'', got string 'Internal Validity'
+looking for string 'Scarlett 6i6 USB-Sync'', got string 'Master Playback Volume'
+
+Updated on 1/19/18 to correct for bug introduced by new alsa version
+1.1.5:
+"looking for string 'Scarlett 6i6 USB-Sync'', got string 'Scarlett 6i6
+USB-Sync Clock Source'"
+
+When your distro updates to alsa 1.1.5, you will likely get this error
+and will have to recompile with the update in order to use the
+program.
+
+Updated on 4/3/18 to correct for bug introduced by a new system
+update:
+"looking for string 'Scarlett 6i6 USB-Sync'', got string 'S/PDIF
+Validity'.
+
+If you get this error, try adding the following definition to line 12
+in include/mixsisctrl.h so it reads:
+#define NEW_ALSA_CTRL_SCHEME
+
+If you can't get the program to work with your system configuration,
+simply file a bug report and I will look into it.
+
+Updated on 11/9/19 due to ALSA update 1.1.7 breaking qsismixer again.

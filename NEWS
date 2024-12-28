@@ -1,0 +1,16 @@
+Changes to 0.2:
+---------------
+-more behind-the-scenes use of QT built-ins
+-now by default does an initial save/load to make sure the hardware controls are set to the same values reported by alsa
+
+Changes to 0.16:
+----------------
+-added callback loop that updates controls when modified by other programs
+-added support for arbitrary alsa devices
+
+Changes between 0.1 and 0.14:
+-----------------------------
+-added save/load functionality
+-added command line interface
+-fixed minor UI issues
+-changed some functionality behind the scenes

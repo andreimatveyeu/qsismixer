@@ -1,0 +1,9 @@
+Make sure to build against Qt5, as this program is incompatible with Qt4 and earlier.
+
+To build+install, enter commands:
+
+qmake
+make
+sudo make install
+
+(currently only installs to /usr/local/bin)
